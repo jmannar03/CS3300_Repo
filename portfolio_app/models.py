@@ -76,7 +76,7 @@ class Project(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('student-detail', args=[str(self.id)])
+        return reverse('project-detail', args=[str(self.id)])
     
     
 

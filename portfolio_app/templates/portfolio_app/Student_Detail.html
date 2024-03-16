@@ -1,0 +1,13 @@
+<h1>List of projects for this student</h1>
+
+<ul>
+
+    {% for project in student.portfolio.project_set.all %}
+        <li>{{ project.title }}
+            <a class="btn btn-info" href="#" role="button">View</a>
+            <a class="btn btn-primary" href="#" role="button">Update</a>
+            <a class="btn btn-danger" href="#" role="button">Delete</a>
+            <p></p>
+        </li>
+    {% endfor  %}
+</ul>

@@ -29,8 +29,8 @@
              <!--  {% url 'index' %}  is defined in url path to dynamically create url -->
              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
              <a class="nav-link" href="admin">admin</a>
-             {% comment %} <a class="nav-link" href="#">Menu 3</a> {% endcomment %}
-             <a class="nav-link" href="#">portfolios</a>
+             <a class="nav-link" href="students/">Students</a> 
+             <a class="nav-link" href="projects/">Projects</a>
              {% comment %} <a href="{% url 'index' %}">Click here</a> {% endcomment %}
              {% if user.is_authenticated %}
                <a class="nav-link" href="{% url 'logout' %}?next={{ request.path }}">Logout {{user}}</a>
