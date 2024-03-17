@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+#from django import forms
+
 
 # Create your models here.
 """
@@ -77,6 +79,11 @@ class Project(models.Model):
     
     def get_absolute_url(self):
         return reverse('project-detail', args=[str(self.id)])
+    
+# class NewProjectForm(forms.ModelForm):
+#    class Meta:
+#      model = Project
+#      fields = '__all__'
     
     
 

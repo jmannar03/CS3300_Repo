@@ -18,9 +18,9 @@
         {% for i in studentActivePortfolios %} 
             <li class="list-group-item">Name: {{ i.name }} 
                 <p><strong>Title:{{ i.portfolio.title }} 
-                <p><strong>Email:{{ i.portfolio.email }}
+                {% comment %} <p><strong>Email:{{ i.portfolio.email }}
                 <p><strong>Description:{{ i.portfolio.about }}
-                <p><strong>Status:{{ i.portfolio.is_Active }}
+                <p><strong>Status:{{ i.portfolio.is_Active }} {% endcomment %}
                 </strong></p> 
                 </strong></p> 
                 </strong></p> 
