@@ -67,3 +67,19 @@ def update_project(request, pk):
     context = {'form':form}
     return render(request, 'portfolio_app/create_form.html',context)
 
+def delete_project(request,pk):
+    project = Project.objects.get(id=pk)
+    if request.method == "POST":
+        project.delete()
+        return redirect('/')
+    context = {'item':project}
+    return render(request, 'portfolio_app/delete_project.html',context)
+
+def view_portfolio(request,pk):
+    portfolio = Portfolio.objects.get(id=pk)
+    context = {'item':portfolio}
+    return render(request, 'portfolio_app/create_form.html',context)
+    
+
+
+

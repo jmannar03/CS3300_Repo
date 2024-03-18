@@ -2,7 +2,7 @@
 
 <ul>
 
-    <li>Portfolio Active: {{ student.portfolio.is_active}}</li>
+    <li>Portfolio Active: {{ student.portfolio.is_Active}}</li>
     <li>Contact Email: {{ student.portfolio.email}}</li>
     <li>Description: {{ student.portfolio.about}}</li>
 <h2>Projects</h2>
@@ -11,7 +11,7 @@
             <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_Project' %}" role="button">Create new</a>
             <a class="btn btn-info" href="#" role="button">View</a>
             <a class="btn btn-sm btn-info" href="{% url 'update_Project' project.id %}" role="button">Update</a>
-            <a class="btn btn-danger" href="#" role="button">Delete</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'delete_Project' project.id %}" role="button">Delete</a>
             <p></p>
         </li>
     {% endfor  %}
