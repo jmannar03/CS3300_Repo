@@ -7,6 +7,9 @@
             {% for student in student_list %}
                 <li>
                     <a href = "{{ student.get_absolute_url }}">{{student.name }}</a>
+                    <div class="blue-box">
+                    <a class="btn btn-info" href="{% url 'update_Portfolio' pk=student.portfolio.id %}" role="button">Update Portfolio</a>
+                    </div> 
                 </li>
             {% endfor %}
         </ul>

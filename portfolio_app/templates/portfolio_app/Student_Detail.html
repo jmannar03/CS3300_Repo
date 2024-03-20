@@ -1,22 +1,59 @@
+{% extends "portfolio_app/base_template.html" %}
+
+<!-- Replace block content in base_template.html -->
+{% block content %}
+
 <h1>Portfolio title: {{student.portfolio.title}}</h1>
+{% comment %} <div class="blue-box">
+    <a class="btn btn-info" href="{% url 'update_Portfolio' student.portfolio.id %}" role="button">Update Portfolio</a>
+    </div> {% endcomment %}
+<style>
+    .blue-box {
+        background-color: lightblue;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    
+    .yellow-box {
+        background-color: yellow;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    
+    .red-box {
+        background-color: red;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    </style>
 
 <ul>
 
-    <li>Portfolio Active: {{ student.portfolio.is_Active}}</li>
-    <li>Contact Email: {{ student.portfolio.email}}</li>
-    <li>Description: {{ student.portfolio.about}}</li>
+    <li>Portfolio Active: {{ student.portfolio.is_Active }}</li>
+    <li>Contact Email: {{ student.portfolio.email }}</li>
+    <li>Description: {{ student.portfolio.about }}</li>
+    
 <h2>Projects</h2>
+<div class="blue-box">
+    <a class="btn btn-info" href="{% url 'create_Project' %}" role="button">Create new</a>
+    </div>
     {% for project in student.portfolio.project_set.all %}
         <li>{{ project.title }}
-            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_Project' %}" role="button">Create new</a>
-            <a class="btn btn-info" href="#" role="button">View</a>
+            <div class="blue-box">
+            <a class="btn btn-info" href="{{ project.get_absolute_url }}" role="button">View</a>
+            </div>
+            <div class="yellow-box">
             <a class="btn btn-sm btn-info" href="{% url 'update_Project' project.id %}" role="button">Update</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'delete_Project' project.id %}" role="button">Delete</a>
+            </div>
+            <div class="red-box">
+            <a class="btn btn-danger btn-sm " href="{% url 'delete_Project' project.id %}" role="button">Delete</a>
+            </div>
             <p></p>
         </li>
     {% endfor  %}
 </ul>
 
-{% comment %} <p><strong>Email:{{ i.portfolio.email }}
-                <p><strong>Description:{{ i.portfolio.about }}
-                <p><strong>Status:{{ i.portfolio.is_Active }} {% endcomment %}
+{% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
 from django.views import generic
-from .forms import ProjectForm
+from .forms import *
 
 
 # Create your views here.
@@ -75,11 +75,22 @@ def delete_project(request,pk):
     context = {'item':project}
     return render(request, 'portfolio_app/delete_project.html',context)
 
-def view_portfolio(request,pk):
-    portfolio = Portfolio.objects.get(id=pk)
-    context = {'item':portfolio}
+def view_portfolio(request):
+    #portfolio = Portfolio.objects.get(id=pk)
+
+    #context = {'item':portfolio}
+    return render(request, 'portfolio_app/view_portfolio.html')
+
+def update_Portfolio(request,pk):
+    portfolio=Portfolio.objects.get(id=pk)
+    form = PortfolioForm(instance=portfolio)
+    if request.method == 'POST':
+        #print('Printing POST: ',request.POST)
+      form = PortfolioForm(request.POST,instance=portfolio)
+      if form.is_valid():
+         form.save()
+         return redirect('/')
+    context = {'form':form}
     return render(request, 'portfolio_app/create_form.html',context)
+
     
-
-
-
